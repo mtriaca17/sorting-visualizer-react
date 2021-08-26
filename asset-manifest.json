@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/sorting-visualizer-react/static/css/main.0d6de21b.chunk.css",
-    "main.js": "/sorting-visualizer-react/static/js/main.7a278104.chunk.js",
-    "main.js.map": "/sorting-visualizer-react/static/js/main.7a278104.chunk.js.map",
-    "runtime-main.js": "/sorting-visualizer-react/static/js/runtime-main.309b1f7c.js",
-    "runtime-main.js.map": "/sorting-visualizer-react/static/js/runtime-main.309b1f7c.js.map",
-    "static/js/2.2ceee820.chunk.js": "/sorting-visualizer-react/static/js/2.2ceee820.chunk.js",
-    "static/js/2.2ceee820.chunk.js.map": "/sorting-visualizer-react/static/js/2.2ceee820.chunk.js.map",
-    "static/js/3.e7b1342c.chunk.js": "/sorting-visualizer-react/static/js/3.e7b1342c.chunk.js",
-    "static/js/3.e7b1342c.chunk.js.map": "/sorting-visualizer-react/static/js/3.e7b1342c.chunk.js.map",
+    "main.css": "/sorting-visualizer-react/static/css/main.6d87377c.chunk.css",
+    "main.js": "/sorting-visualizer-react/static/js/main.55e76482.chunk.js",
+    "main.js.map": "/sorting-visualizer-react/static/js/main.55e76482.chunk.js.map",
+    "runtime-main.js": "/sorting-visualizer-react/static/js/runtime-main.7b889cdf.js",
+    "runtime-main.js.map": "/sorting-visualizer-react/static/js/runtime-main.7b889cdf.js.map",
+    "static/js/2.daa57166.chunk.js": "/sorting-visualizer-react/static/js/2.daa57166.chunk.js",
+    "static/js/2.daa57166.chunk.js.map": "/sorting-visualizer-react/static/js/2.daa57166.chunk.js.map",
+    "static/js/3.4064296e.chunk.js": "/sorting-visualizer-react/static/js/3.4064296e.chunk.js",
+    "static/js/3.4064296e.chunk.js.map": "/sorting-visualizer-react/static/js/3.4064296e.chunk.js.map",
     "index.html": "/sorting-visualizer-react/index.html",
-    "static/css/main.0d6de21b.chunk.css.map": "/sorting-visualizer-react/static/css/main.0d6de21b.chunk.css.map",
-    "static/js/2.2ceee820.chunk.js.LICENSE.txt": "/sorting-visualizer-react/static/js/2.2ceee820.chunk.js.LICENSE.txt"
+    "static/css/main.6d87377c.chunk.css.map": "/sorting-visualizer-react/static/css/main.6d87377c.chunk.css.map",
+    "static/js/2.daa57166.chunk.js.LICENSE.txt": "/sorting-visualizer-react/static/js/2.daa57166.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.309b1f7c.js",
-    "static/js/2.2ceee820.chunk.js",
-    "static/css/main.0d6de21b.chunk.css",
-    "static/js/main.7a278104.chunk.js"
+    "static/js/runtime-main.7b889cdf.js",
+    "static/js/2.daa57166.chunk.js",
+    "static/css/main.6d87377c.chunk.css",
+    "static/js/main.55e76482.chunk.js"
   ]
 }
