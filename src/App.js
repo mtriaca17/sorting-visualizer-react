@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import React from 'react';
+import BubbleSortVisualizer from './BubbleSortVisualizer';
+import SelectionSortVisualizer from './SelectionSortVisualizer';
+import InsertionSortVisualizer from './InsertionSortVisualizer';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Sorting visualizer</h1>
+      <button>Generate New Array</button>
+      <BubbleSortVisualizer />
+      <SelectionSortVisualizer />
+      <InsertionSortVisualizer />
     </div>
   );
 }
