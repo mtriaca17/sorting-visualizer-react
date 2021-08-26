@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
@@ -26,13 +26,18 @@ const useStyles = createUseStyles({
   },
 });
 
-const exampleArray = [4, 2, 1, 5, 3, 9, 2, 3, 12, 5, 6, 9, 2, 4, 7, 8, 12, 5, 4, 12, 13];
-// const exampleArray = [3, 12, 5, 6, 9, 2, 4, 7, 8, 12, 5, 4, 12, 13, 4, 2, 1, 5, 3, 9, 2];
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
-function SelectionSortVisualizer() {
-  const [arrToSort, setArrToSort] = useState(exampleArray);
+function SelectionSortVisualizer(props) {
+  const [arrayBeingSorted, setArrayBeingSorted] = useState([...props.arrayToSort]);
+
+  const [steps, setSteps] = useState(0);
+  const arrayToSort = [...props.arrayToSort];
   const classes = useStyles();
+
+  useEffect(() => {
+    setArrayBeingSorted([...props.arrayToSort]);
+  }, [props.arrayToSort]);
 
   const selectionSort = async arr => {
     for (let i = 0; i < arr.length; i++) {
@@ -44,8 +49,9 @@ function SelectionSortVisualizer() {
       }
       if (i !== lowest) {
         [arr[i], arr[lowest]] = [arr[lowest], arr[i]];
-        setArrToSort([...arr]);
-        await timer(300);
+        setSteps(prevState => prevState + 1);
+        setArrayBeingSorted([...arr]);
+        await timer(50);
       }
     }
     console.log(arr);
@@ -53,14 +59,15 @@ function SelectionSortVisualizer() {
   };
 
   const handleClick = () => {
-    selectionSort(arrToSort);
+    selectionSort(arrayBeingSorted);
   };
   return (
     <div className={classes.root}>
       <h1>Selection Sort</h1>
+      <p># of steps: {steps}</p>
       <div className={classes.sortDisplayer}>
-        {arrToSort.map((val, index) => (
-          <div className={classes.bar} key={index} style={{ height: `${val * 30}px` }}></div>
+        {arrayBeingSorted.map((val, index) => (
+          <div className={classes.bar} key={index} style={{ height: `${val}px` }}></div>
         ))}
       </div>
       <button onClick={handleClick}>Sort</button>

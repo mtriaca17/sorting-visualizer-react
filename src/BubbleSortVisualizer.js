@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
@@ -26,11 +26,16 @@ const useStyles = createUseStyles({
   },
 });
 
-const exampleArray = [4, 2, 1, 5, 3, 9, 2, 3, 12, 5, 6, 9, 2, 4, 7, 8, 12, 5, 4, 12, 13];
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
-function BubbleSortVisualizer() {
-  const [arrToSort, setArrToSort] = useState(exampleArray);
+function BubbleSortVisualizer(props) {
+  // const toSrt = [...props.arrayToSort];
+  const [steps, setSteps] = useState(0);
+  const [arrayBeingSorted, setArrayBeingSorted] = useState([...props.arrayToSort]);
+
+  useEffect(() => {
+    setArrayBeingSorted([...props.arrayToSort]);
+  }, [props.arrayToSort]);
 
   const bubbleSort = async arr => {
     let noSwaps;
@@ -39,10 +44,10 @@ function BubbleSortVisualizer() {
       for (let j = 0; j < i - 1; j++) {
         if (arr[j] > arr[j + 1]) {
           [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-          setArrToSort([...arr]);
-          console.log(arrToSort);
+          setSteps(prevState => prevState + 1);
+          setArrayBeingSorted([...arr]);
           noSwaps = false;
-          await timer(200);
+          await timer(50);
         }
       }
       if (noSwaps) break;
@@ -51,7 +56,8 @@ function BubbleSortVisualizer() {
   };
 
   const handleClick = () => {
-    bubbleSort(arrToSort);
+    bubbleSort(arrayBeingSorted);
+    // console.log('!!!!', arrayToSort);
   };
 
   const classes = useStyles();
@@ -59,9 +65,10 @@ function BubbleSortVisualizer() {
   return (
     <div className={classes.root}>
       <h1>Bubble Sort</h1>
+      <p># of steps: {steps}</p>
       <div className={classes.sortDisplayer}>
-        {arrToSort.map((val, index) => (
-          <div className={classes.bar} key={index} style={{ height: `${val * 30}px` }}></div>
+        {arrayBeingSorted.map((val, index) => (
+          <div className={classes.bar} key={index} style={{ height: `${val}px` }}></div>
         ))}
       </div>
       <button onClick={handleClick}>Sort</button>
