@@ -48,11 +48,11 @@ function App() {
       <button className={classes.newBtn} onClick={onClick}>
         Generate New Array
       </button>
-      {/* <BubbleSortVisualizer arrayToSort={arrToSort} />
+      <BubbleSortVisualizer arrayToSort={arrToSort} />
       <SelectionSortVisualizer arrayToSort={arrToSort} />
-      <InsertionSortVisualizer arrayToSort={arrToSort} /> */}
+      <InsertionSortVisualizer arrayToSort={arrToSort} />
       {/* <MergeSortVisualizer arrayToSort={arrToSort} /> */}
-      {/* <QuickSortVisualizer arrayToSort={arrToSort} /> */}
+      <QuickSortVisualizer arrayToSort={arrToSort} />
       <RadixSortVisualizer arrayToSort={arrToSort} />
     </div>
   );

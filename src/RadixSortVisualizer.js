@@ -30,7 +30,7 @@ const timer = ms => new Promise(res => setTimeout(res, ms));
 
 function RadixSortVisualizer(props) {
   const [arrayBeingSorted, setArrayBeingSorted] = useState([...props.arrayToSort]);
-  const [steps, setSteps] = useState(0);
+  // const [steps, setSteps] = useState(0);
   const classes = useStyles();
 
   useEffect(() => {
