@@ -24,13 +24,16 @@ const useStyles = createUseStyles({
     width: '10px',
     backgroundColor: 'dodgerblue',
   },
+  lowest: {
+    backgroundColor: 'orange',
+  },
 });
 
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
 function SelectionSortVisualizer(props) {
   const [arrayBeingSorted, setArrayBeingSorted] = useState([...props.arrayToSort]);
-
+  const [lowestIndex, setLowestIndex] = useState();
   const [steps, setSteps] = useState(0);
 
   const classes = useStyles();
@@ -42,9 +45,11 @@ function SelectionSortVisualizer(props) {
   const selectionSort = async arr => {
     for (let i = 0; i < arr.length; i++) {
       let lowest = i;
+      setLowestIndex(lowest);
       for (let j = i + 1; j < arr.length; j++) {
         if (arr[j] < arr[lowest]) {
           lowest = j;
+          setLowestIndex(lowest);
         }
       }
       if (i !== lowest) {
@@ -68,7 +73,11 @@ function SelectionSortVisualizer(props) {
       <p># of steps: {steps}</p>
       <div className={classes.sortDisplayer}>
         {arrayBeingSorted.map((val, index) => (
-          <div className={classes.bar} key={index} style={{ height: `${val}px` }}></div>
+          <div
+            className={`${classes.bar} ${lowestIndex === index && classes.lowest}`}
+            key={index}
+            style={{ height: `${val}px` }}
+          ></div>
         ))}
       </div>
       <button onClick={handleClick}>Sort</button>

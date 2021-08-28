@@ -24,7 +24,7 @@ const useStyles = createUseStyles({
 });
 
 const generateArray = (length = 100) => {
-  return Array.from({ length: length }, () => Math.floor(Math.random() * 100) + 1);
+  return Array.from({ length: length }, () => Math.floor(Math.random() * 150) + 1);
 };
 
 // const exampleArray = [4, 2, 1, 5, 3, 9, 2, 3, 12, 5, 6, 9, 2, 4, 7, 8, 12, 5, 4, 12, 13];

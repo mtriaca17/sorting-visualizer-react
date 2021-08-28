@@ -24,6 +24,9 @@ const useStyles = createUseStyles({
     width: '10px',
     backgroundColor: 'dodgerblue',
   },
+  currentVal: {
+    backgroundColor: 'orange',
+  },
 });
 
 const timer = ms => new Promise(res => setTimeout(res, ms));
@@ -31,6 +34,7 @@ const timer = ms => new Promise(res => setTimeout(res, ms));
 function InsertionSortVisualizer(props) {
   const [arrayBeingSorted, setArrayBeingSorted] = useState([...props.arrayToSort]);
   const [steps, setSteps] = useState(0);
+  const [currentValIndex, setCurrentValIndex] = useState();
   const classes = useStyles();
 
   useEffect(() => {
@@ -40,10 +44,12 @@ function InsertionSortVisualizer(props) {
   const inserstionSort = async arr => {
     for (let i = 1; i < arr.length; i++) {
       let currentVal = arr[i];
+      setCurrentValIndex(i);
       for (let j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
         arr[j + 1] = arr[j];
         arr[j] = currentVal;
         setSteps(prevState => prevState + 1);
+        setCurrentValIndex(j);
         setArrayBeingSorted([...arr]);
         await timer(50);
         // console.log(arr);
@@ -61,7 +67,11 @@ function InsertionSortVisualizer(props) {
       <p># of steps: {steps}</p>
       <div className={classes.sortDisplayer}>
         {arrayBeingSorted.map((val, index) => (
-          <div className={classes.bar} key={index} style={{ height: `${val}px` }}></div>
+          <div
+            className={`${classes.bar} ${currentValIndex === index && classes.currentVal}`}
+            key={index}
+            style={{ height: `${val}px` }}
+          ></div>
         ))}
       </div>
       <button onClick={handleClick}>Sort</button>
