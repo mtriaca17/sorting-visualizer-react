@@ -28,44 +28,57 @@ const useStyles = createUseStyles({
 
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
-function SelectionSortVisualizer(props) {
+function RadixSortVisualizer(props) {
   const [arrayBeingSorted, setArrayBeingSorted] = useState([...props.arrayToSort]);
-
   const [steps, setSteps] = useState(0);
-
   const classes = useStyles();
 
   useEffect(() => {
     setArrayBeingSorted([...props.arrayToSort]);
   }, [props.arrayToSort]);
 
-  const selectionSort = async arr => {
-    for (let i = 0; i < arr.length; i++) {
-      let lowest = i;
-      for (let j = i + 1; j < arr.length; j++) {
-        if (arr[j] < arr[lowest]) {
-          lowest = j;
-        }
+  const radixSort = async arr => {
+    console.log('start', arr);
+    let maxDigitCount = mostDigits(arr);
+    for (let k = 0; k < maxDigitCount; k++) {
+      let digitBuckets = Array.from({ length: 10 }, () => []);
+      for (let i = 0; i < arr.length; i++) {
+        //digitBuckets[getDigit(arr[i], k)].push(arr[i])
+        let digit = getDigit(arr[i], k);
+        digitBuckets[digit].push(arr[i]);
       }
-      if (i !== lowest) {
-        await timer(50);
-        [arr[i], arr[lowest]] = [arr[lowest], arr[i]];
-        setSteps(prevState => prevState + 1);
-        setArrayBeingSorted([...arr]);
-      }
+      arr = [].concat(...digitBuckets);
+      console.log(arr);
+      setArrayBeingSorted([...arr]);
+      await timer(2000);
     }
-    console.log(arr);
     return arr;
   };
 
-  const handleClick = () => {
-    selectionSort(arrayBeingSorted);
+  const getDigit = (num, i) => {
+    return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
   };
 
+  const digitCount = num => {
+    if (num === 0) return 1;
+    return Math.floor(Math.log10(Math.abs(num))) + 1;
+  };
+
+  const mostDigits = arr => {
+    let maxDigits = 0;
+    for (let i = 0; i < arr.length; i++) {
+      maxDigits = Math.max(maxDigits, digitCount(arr[i]));
+    }
+    return maxDigits;
+  };
+
+  const handleClick = () => {
+    radixSort(arrayBeingSorted);
+  };
   return (
     <div className={classes.root}>
-      <h1>Selection Sort</h1>
-      <p># of steps: {steps}</p>
+      <h1>Radix Sort</h1>
+      {/* <p># of steps: {steps}</p> */}
       <div className={classes.sortDisplayer}>
         {arrayBeingSorted.map((val, index) => (
           <div className={classes.bar} key={index} style={{ height: `${val}px` }}></div>
@@ -76,4 +89,4 @@ function SelectionSortVisualizer(props) {
   );
 }
 
-export default SelectionSortVisualizer;
+export default RadixSortVisualizer;

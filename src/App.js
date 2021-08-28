@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import BubbleSortVisualizer from './BubbleSortVisualizer';
 import SelectionSortVisualizer from './SelectionSortVisualizer';
 import InsertionSortVisualizer from './InsertionSortVisualizer';
+import MergeSortVisualizer from './MergeSortVisualizer';
+import QuickSortVisualizer from './QuickSortVisualizer';
+import RadixSortVisualizer from './RadixSortVisualizer';
 import { createUseStyles } from 'react-jss';
 
 // import './App.css';
@@ -20,7 +23,7 @@ const useStyles = createUseStyles({
   },
 });
 
-const generateArray = (length = 50) => {
+const generateArray = (length = 100) => {
   return Array.from({ length: length }, () => Math.floor(Math.random() * 100) + 1);
 };
 
@@ -45,9 +48,12 @@ function App() {
       <button className={classes.newBtn} onClick={onClick}>
         Generate New Array
       </button>
-      <BubbleSortVisualizer arrayToSort={arrToSort} />
+      {/* <BubbleSortVisualizer arrayToSort={arrToSort} />
       <SelectionSortVisualizer arrayToSort={arrToSort} />
-      <InsertionSortVisualizer arrayToSort={arrToSort} />
+      <InsertionSortVisualizer arrayToSort={arrToSort} /> */}
+      {/* <MergeSortVisualizer arrayToSort={arrToSort} /> */}
+      {/* <QuickSortVisualizer arrayToSort={arrToSort} /> */}
+      <RadixSortVisualizer arrayToSort={arrToSort} />
     </div>
   );
 }
